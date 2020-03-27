@@ -15,6 +15,10 @@ module Dummy
       config.active_record.sqlite3.represent_boolean_as_integer = true
     end
 
+    if Rails.version.match? "6.0.+"
+      config.load_defaults "6.0"
+    end
+
     config.i18n.enforce_available_locales = true
     config.encoding = "utf-8"
     config.filter_parameters += [:password]

@@ -1,17 +1,4 @@
-require 'merit/rule'
-require 'merit/rules_badge_methods'
-require 'merit/rules_points_methods'
-require 'merit/rules_rank_methods'
-require 'merit/rules_matcher'
-require 'merit/controller_extensions'
-require 'merit/model_additions'
-require 'merit/judge'
-require 'merit/reputation_change_observer'
-require 'merit/sash_finder'
-require 'merit/base_target_finder'
-require 'merit/target_finder'
-require 'merit/models/base/sash'
-require 'merit/models/base/badges_sash'
+require 'zeitwerk'
 
 module Merit
   def self.setup
@@ -24,7 +11,6 @@ module Merit
     @config.checks_on_each_request
   end
 
-  # # Define ORM
   def self.orm
     @config.orm || :active_record
   end
@@ -118,3 +104,7 @@ module Merit
     end
   end
 end
+
+loader = Zeitwerk::Loader.for_gem
+loader.setup
+loader.eager_load
