@@ -1,5 +1,5 @@
-module Merit
-  module BadgesSash
+module Merit::Models
+  module BadgesSashConcern
     extend ActiveSupport::Concern
 
     included do

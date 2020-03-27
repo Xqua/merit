@@ -67,7 +67,6 @@ module Merit
 
     initializer 'merit.controller' do |app|
       extend_orm_with_has_merit
-      require_models
       ActiveSupport.on_load(action_controller_hook) do
         begin
           # Load app rules on boot up
@@ -80,15 +79,6 @@ module Merit
             e.to_s =~ /uninitialized constant Merit::(BadgeRules|PointRules)/
         end
       end
-    end
-
-    def require_models
-      require 'merit/models/base/sash'
-      require 'merit/models/base/badges_sash'
-      require "merit/models/#{Merit.orm}/merit/activity_log"
-      require "merit/models/#{Merit.orm}/merit/badges_sash"
-      require "merit/models/#{Merit.orm}/merit/sash"
-      require "merit/models/#{Merit.orm}/merit/score"
     end
 
     def extend_orm_with_has_merit
